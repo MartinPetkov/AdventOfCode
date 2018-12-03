@@ -3,9 +3,25 @@
 import argparse
 
 
+def check_letters(s, num_letters):
+  for l in set(s):
+    if s.count(l) == num_letters:
+      return True
+
+  return False
+
+
 def part1(input):
-  # TODO: Implement
-  pass
+  two_letters = 0
+  three_letters = 0
+  for box_id in input:
+    if check_letters(box_id, 2):
+      two_letters += 1
+
+    if check_letters(box_id, 3):
+      three_letters += 1
+
+  return two_letters * three_letters
   
 
 def main():
@@ -21,7 +37,7 @@ def main():
   input_file = args.input_file
 
   with open(input_file) as f:
-    input = [l.strip() for l in f.readlines()]
+    input = f.readlines()
   
   print(part1(input))
 

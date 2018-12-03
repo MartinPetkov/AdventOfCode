@@ -2,9 +2,22 @@
 
 import argparse
 
+
 def part2(input):
-  # TODO: Implement
-  pass
+  # Track all strings with each letter missing.
+  # If seen, exit early.
+  seen = {}
+  for box_id in input:
+    for i in range(len(box_id) - 1):
+      if i not in seen:
+        seen[i] = set()
+
+      s = box_id[:i] + box_id[i+1:]
+      if s in seen[i]:
+        print(s)
+
+      seen[i].add(s)
+
   
 
 def main():
